@@ -1,0 +1,37 @@
+
+7zip :
+https://www.7-zip.org/download.html
+
+Kafka:
+http://kafka.apache.org/downloads.html
+
+
+
+1. Change the log file path
+server.properties:
+log.dirs=C:/Kafka/kafka_2.13-2.6.0/kafka-logs
+
+2. Change the data file path
+zookeeper.properties:
+dataDir=C:/Kafka/kafka_2.13-2.6.0/kafka-zookeeper-data
+
+3. Start Zookeeper server
+CMD-> C:\Kafka\kafka_2.13-2.6.0>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+4. Start Kafka server
+CMD-> C:\Kafka\kafka_2.13-2.6.0>.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+5. Create topic
+CMD-> C:\Kafka\kafka_2.13-2.6.0>.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic TestTopic
+
+6. List topics
+C:\Kafka\kafka_2.13-2.6.0>.\bin\windows\kafka-topics.bat --list --zookeeper localhost:2181
+
+7. Open Kafka Producer console and Send messages
+C:\Kafka\kafka_2.13-2.6.0>.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic TestTopic
+
+8. Open Kafka Consumer console and Read messages
+C:\Kafka\kafka_2.13-2.6.0>.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic TestTopic --from-beginning
+
+Happy Programming!!!
+
